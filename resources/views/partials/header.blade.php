@@ -12,8 +12,21 @@
              <img src="{{URL('images/compte.png')}}" id="imageCompte">
                     </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="min-width: 0;">
-                            <li><a class="dropdown-item" href="/PageConnexion" style="color: black;">Connexion</a></li>
-                            <li><a class="dropdown-item" href="/PageInscription" style="color: black;">Inscription</a></li>
+                                @if (Route::has('login'))
+                                    @auth
+                                        <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                            <li><a class="dropdown-item" href="{{route('logout')}}"  onclick="event.preventDefault();
+                                            this.closest('form').submit();" style="color: black;">Déconnecter</a> </li>
+                                        </form>
+                                    @else
+                                        <li><a class="dropdown-item" href="{{ route('login') }}" style="color: black;">Connexion</a></li>
+                                        @if (Route::has('register'))
+                                            <li><a class="dropdown-item" href="{{ route('register') }}" style="color: black;">Inscription</a></li>
+                                        @endif
+                                    @endauth
+                                @endif
+
                             </ul>
                 </span>
                 </div>

@@ -17,9 +17,12 @@ class HomeController extends Controller
         $title = "Inscription";
         return view("pageInscription" ,compact('title'));
     }
+    public function connexion(Request $request){
+        dd($request->all());
+    }
     public function pageConnexion()
     {
         $title = "Connexion";
-        return view('pageConnexion',compact('title'));
+        return view('PageConnexion',compact('title'));
     }
 }

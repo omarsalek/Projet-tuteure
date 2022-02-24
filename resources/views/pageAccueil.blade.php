@@ -2,7 +2,7 @@
 
 @section('content')
     <main>
-        <section  class="container-fluid mt-5">
+            <section  class="container-fluid mt-5">
             <div class="float-end">
                 <img src="{{URL('images/VetementsDonations.png')}}" alt="donationVetements" class="img-fluid" id="imagesPresentation">
             </div>
