@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -24,5 +26,14 @@ class HomeController extends Controller
     {
         $title = "Connexion";
         return view('PageConnexion',compact('title'));
+    }
+    public function profilInformations(){
+        $user= Auth::user();
+        //$this->user = User::find(Auth::user()->id);
+
+        //var_dump($user);
+        //exit();
+        return view('dashboard' ,compact('user') );
+
     }
 }
