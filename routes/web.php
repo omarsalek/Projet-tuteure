@@ -23,11 +23,6 @@ Route::get("/PageConnexion", [HomeController::class, "pageConnexion"]);
 Route::get('/profiles/{username}', 'ProfileController@show')->name('profiles.show');
 
 
-Route::get('dashboard',[HomeController::class,"profilInformations"]);
-/*
+Route::get('dashboard',[HomeController::class,"profilInformations"])->middleware(['auth'])->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-*/
 require __DIR__.'/auth.php';

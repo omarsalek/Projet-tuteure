@@ -1,8 +1,11 @@
 #form_log {
-    background-color: #6e4dfa;
+    background-color: rgb(7, 13, 141);
     border-radius: 20px;
-    margin:20px;
+    margin:10px;
+    padding-top:30px;
+    padding-bottom: 800px;
 }
+
 .divider:after,
 .divider:before {
     content: "";

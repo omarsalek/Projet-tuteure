@@ -38,7 +38,7 @@
                             <p class="mb-0 mr-30">Civilité : </p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="mb-0">dd</p>
+                            <p class="mb-0">{{ $user->sexe}}</p>
                         </div>
                     </div>
                     <hr>
@@ -47,7 +47,7 @@
                             <p class="mb-0">Nom : </p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="mb-0">dd</p>
+                            <p class="mb-0">{{ $user->name}}</p>
                         </div>
                     </div>
                     <hr>
@@ -56,7 +56,7 @@
                             <p class="mb-0">Prénom :</p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="mb-0">dd</p>
+                            <p class="mb-0">{{ $user->prenom}}</p>
                         </div>
                     </div>
                     <hr>
@@ -65,7 +65,7 @@
                             <p class="mb-0">Age : </p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="mb-0">dd</p>
+                            <p class="mb-0">{{ $user->age}}</p>
                         </div>
                     </div>
                     <hr>
@@ -74,7 +74,7 @@
                             <p class="mb-0">Role :</p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="mb-0">dd</p>
+                            <p class="mb-0">{{ $user->role}}</p>
                         </div>
                     </div>
                     <hr>
@@ -83,7 +83,7 @@
                             <p class="mb-0">Ville :</p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="mb-0">ddd</p>
+                            <p class="mb-0">{{ $user->ville}}</p>
                         </div>
                     </div>
                     <hr>
@@ -92,7 +92,7 @@
                             <p class="mb-0">Email :</p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="mb-0">ff</p>
+                            <p class="mb-0">{{ $user->email}}</p>
                         </div>
                     </div>
 
