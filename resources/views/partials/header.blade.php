@@ -1,5 +1,5 @@
  <header>
-        <nav id="navbar-example3" class="navbar navbar-expand-lg navbar-dark" style="background-color:#d0c0f8;" >
+        <nav id="navbar-example3" class="navbar navbar-expand-lg navbar-dark" style="background-color:#bba2ff;" >
             <div class="container-fluid">
                 <a class="navbar-brand" href="/" id="titre">Rameurs Tricolores Donations</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,11 +14,13 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="min-width: 0;">
                                 @if (Route::has('login'))
                                     @auth
+                                        <li><a class="dropdown-item" href="/dashboard" style="color: black;">Mon Compte</a></li>
                                         <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                             <li><a class="dropdown-item" href="{{route('logout')}}"  onclick="event.preventDefault();
                                             this.closest('form').submit();" style="color: black;">Déconnecter</a> </li>
                                         </form>
+
                                     @else
                                         <li><a class="dropdown-item" href="{{ route('login') }}" style="color: black;">Connexion</a></li>
                                         @if (Route::has('register'))

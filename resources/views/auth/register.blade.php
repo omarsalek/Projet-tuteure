@@ -6,28 +6,39 @@
 <x-guest-layout>
     <x-auth-card>
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
         <form method="POST" action="{{ route('register') }}">
             @csrf
             <!-- Civilite-->
-                <div>
-                    <input type="radio" class="civilite" name="civilite" value="Monsieur">
-                    <label class="labelCivilite">Mr</label>
-                    <input type="radio"  class="civilite" name="civilite" value="Madame">
-                    <label  class="labelCivilite">Mme</label>
+                <div class="wrapper">
+                <input type="radio" name="civilite" id="option-1" value="Madame" checked>
+                <input type="radio" name="civilite" id="option-2" value="Monsieur">
+                <label for="option-1" class="option option-1">
+                    <div class="dot"></div>
+                    <span>Madame</span>
+                </label>
+                <label for="option-2" class="option option-2">
+                    <div class="dot"></div>
+                    <span>Monsieur</span>
+                </label>
                 </div>
             <!--Role -->
-            <div>
-                <x-label for="name" :value="__('Role')" />
-                <select name="role">
-                    <option value="offreurSHN">Offreur(SHN)</option>
-                    <option value="demandeur">Demandeur</option>
-                </select>
-            </div>
+
+                <div class="wrapper2">
+                    <input type="radio" name="role" id="option-3" value="offreurSHN" checked>
+                    <input type="radio" name="role" id="option-4" value="demandeur">
+                    <label for="option-3" class="option option-3">
+                        <div class="dot"></div>
+                        <span>Offreur(SHN)</span>
+                    </label>
+                    <label for="option-4" class="option option-4">
+                        <div class="dot"></div>
+                        <span>Demandeur</span>
+                    </label>
+                </div>
             <!-- Name -->
+
             <div>
+                <br>
                 <x-label for="name" :value="__('Nom')" />
 
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />

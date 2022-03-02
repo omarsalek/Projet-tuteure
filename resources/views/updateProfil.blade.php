@@ -19,7 +19,7 @@
             <div class="p-3 py-5 ">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mr mb-1"></i>
-                        <a href="index.php?module=ModProfil&action=Profil" class="btn btn-info" role="button">Annuler Modification</a>
+                        <a href="/dashboard" class="btn btn-info" role="button">Annuler Modification</a>
                     </div>
                 </div>
                 <form id="formulaireModif" action="index.php?module=ModProfil&action=ModificationProfil" method="post">
@@ -32,12 +32,11 @@
                         <div class="col-md-6"><input type="text" class="form-control" name="prenomNv" placeholder="Prenom"></div>
                         <div class="col-md-6"><input type="text" class="form-control" name="nomNv" placeholder="Nom"></div>
                     </div>
-                    <label id="LabelPoste">Poste Match : </label>
-                    <select name="posteNv" required>
-                        <option value="Attaquant">Attaquant</option>
-                        <option value="Milieux">Milieux</option>
-                        <option value="Defenseur">Défenseur</option>
-                        <option value="Gardien">Gardien</option>
+                    <label id="LabelPoste">Role : </label>
+                    <select name="roleNv" required>
+                        <option value="OffreurSHN">SHN</option>
+                        <option value="Demandeur">Demandeur</option>
+
                     </select>
                     <div class="row mt-3">
                         <div class="col-md-6"><input type="email" class="form-control" name="emailNv" placeholder="Email"></div>
