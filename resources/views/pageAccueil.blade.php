@@ -2,7 +2,7 @@
 
 @section('content')
     <main>
-            <section  class="container-fluid mt-5">
+            <section class="container-fluid mt-5">
             <div class="float-end">
                 <img src="{{URL('images/VetementsDonations.png')}}" alt="donationVetements" class="img-fluid" id="imagesPresentation">
             </div>
@@ -10,11 +10,11 @@
                 <p id="p1">Espace de donations </p>
                 <p>Notre objectif c'est de permettre aux offreurs de déposer leurs annonces afin que les demandeurs bénéficient de ces dons  </p>
             </div>
-            {{--<?php if (isset($_SESSION['login'])) : ?>
-            <a href="index.php?module=ModProfil" class="btn btn-primary" >Consulter Profil</a>
-            <?php else: ?>
-            <?php endif; ?>--}}
-            <a href="/PageInscription" class="btn btn-primary" >Inscrivez vous gratuitement</a>
+            @if (!Auth::guest())
+            <a href="/dashboard" class="btn btn-primary" >Consulter Profil</a>
+            @else
+            <a href="/register" class="btn btn-primary" >Inscrivez vous gratuitement</a>
+            @endif
         </section>
 
         <section  id="section2" class="container-fluid mt-5">

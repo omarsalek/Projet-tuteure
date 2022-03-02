@@ -16,12 +16,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
 Route::get("/", [HomeController::class, "pageAccueil"]);
-Route::get("/pageInscription", [HomeController::class, "pageInscription"]);
-Route::get("/PageConnexion", [HomeController::class, "pageConnexion"]);
 
-
-Route::get('/profiles/{username}', 'ProfileController@show')->name('profiles.show');
-
+Route::get('/ModificationsProfil', [HomeController::class ,"modificationProfil"]);
 
 Route::get('dashboard',[HomeController::class,"profilInformations"])->middleware(['auth'])->name('dashboard');
 

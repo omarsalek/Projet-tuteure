@@ -8,18 +8,16 @@
                 <div class="profile-header-cover"></div>
                 <div class="profile-header-content">
                     <div class="profile-header-img mb-4">
-                        {{--
-                        <?php
-                        if ($data['sexe']=='Madame'): ?>
+
+                        @if ($user->sexe=='Madame')
                         <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="mb-4" alt="" />
-                        <?php else: ?>
-                        <?php endif; ?>
-                    </div>--}}
+                        @else
                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="mb-4" alt="" />
+                        @endif
                     </div>
                         <div class="profile-header-info">
                         <h4 class="m-t-sm">{{ $user->name}}</h4>
-                        <a href="index.php?module=ModProfil&action=FormModifProfil" class="btn btn-xs btn-primary mb-2">Modifier mon profil</a>
+                        <a href="/ModificationsProfil" class="btn btn-xs btn-primary mb-2">Modifier mon profil</a>
                     </div>
                 </div>
                 <ul class="profile-header-tab nav nav-tabs">

@@ -12,11 +12,11 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
             <!-- Civilite-->
-                <div class="form-outline mb-4">
-                    <input type="radio" id="choix1" class="civilite" name="civilite" value="Monsieur">
-                    <label for="choix1" class="labelCivilite">Mr</label>
-                    <input type="radio" id="choix2" class="civilite" name="civilite" value="Madame">
-                    <label for="choix2" class="labelCivilite">Mme</label>
+                <div>
+                    <input type="radio" class="civilite" name="civilite" value="Monsieur">
+                    <label class="labelCivilite">Mr</label>
+                    <input type="radio"  class="civilite" name="civilite" value="Madame">
+                    <label  class="labelCivilite">Mme</label>
                 </div>
             <!--Role -->
             <div>
