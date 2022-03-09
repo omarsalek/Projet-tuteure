@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ShnController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\Http\Controllers\HomeController;
-
 Route::get("/", [HomeController::class, "pageAccueil"]);
 
 Route::get('/ModificationsProfil', [HomeController::class ,"modificationProfil"]);
 
+Route::put('/ModificationsProfil',[HomeController::class ,"updateProfil"])->name('updateProfil');
+
 Route::get('dashboard',[HomeController::class,"profilInformations"])->middleware(['auth'])->name('dashboard');
+
+
+Route::get('/GererAnnonces', [ShnController::class ,"gererAnnonces"])->name('gererAnnonces');
+
+Route::get('/ChoixCreationAnnonces', [ShnController::class ,"choixCreationAnnonces"])->name('choixCreationAnnonces');
 
 require __DIR__.'/auth.php';

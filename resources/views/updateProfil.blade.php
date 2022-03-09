@@ -22,7 +22,30 @@
                         <a href="/dashboard" class="btn btn-info" role="button">Annuler Modification</a>
                     </div>
                 </div>
-                <form id="formulaireModif" action="index.php?module=ModProfil&action=ModificationProfil" method="post">
+                @if(Session::has('success'))
+                    <div class="alert alert-success">
+                        {{ Session::get('success') }}
+                    </div>
+                @elseif ($errors->any())
+                        <div class="form-group">
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                 @elseif(Session::has('danger'))
+                        <div class="alert alert-danger">
+                            {{ Session::get('danger') }}
+                        </div>
+
+                @endif
+                <form id="formulaireModif" action="{{route('updateProfil')}}" method="post">
+
+                    @csrf
+                    @method('PUT')
                     <input type="radio" id="choix1" class="civilite" name="civiliteNv" value="Monsieur" required>
                     <label for="choix1">Mr</label>
 
@@ -30,7 +53,7 @@
                     <label for="choix2">Mme</label>
                     <div class="row mt-4 mr-3">
                         <div class="col-md-6"><input type="text" class="form-control" name="prenomNv" placeholder="Prenom"></div>
-                        <div class="col-md-6"><input type="text" class="form-control" name="nomNv" placeholder="Nom"></div>
+                        <div class="col-md-6"><input type="text" class="form-control" name="nameNv" placeholder="Nom"></div>
                     </div>
                     <label id="LabelPoste">Role : </label>
                     <select name="roleNv" required>
@@ -46,7 +69,7 @@
                         <div class="col-md-6"><input type="password" class="form-control" name="passwordNv"placeholder="Mot de passe" ></div>
                         <div class="col-md-6"><input type="text" class="form-control" name="villeNv" placeholder="Ville"></div>
                     </div>
-                    <div class=btn><button class="btn btn-danger "  class="mr-3" name="FormModifProfil" type="submit">Enregistrer Profile</button></div>
+                    <div class=btn><button class="btn btn-success "  class="mr-3" type="submit">Enregistrer Profile</button></div>
                 </form>
             </div>
         </div>
