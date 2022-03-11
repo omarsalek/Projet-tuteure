@@ -79,3 +79,27 @@
         width: 100%;
     }
 }
+#dateAnnonce{
+    height: 50px;
+    display: flex;
+    margin-top: 2%;
+    align-items: center;
+}
+#InputImageAnnonce{
+    display: flex;
+    margin-top: 2%;
+    align-items: center;
+}
+
+#labeleAnnonceTitre{
+    cursor: pointer;
+    color: #03023f;
+    font-weight: bold;
+}
+
+input[type='file'] {
+    color: transparent;
+}
+#btnRadio{
+    display:none;
+}

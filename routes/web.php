@@ -28,4 +28,12 @@ Route::get('/GererAnnonces', [ShnController::class ,"gererAnnonces"])->name('ger
 
 Route::get('/ChoixCreationAnnonces', [ShnController::class ,"choixCreationAnnonces"])->name('choixCreationAnnonces');
 
+Route::get('/CreationAnnonceVetements', [ShnController::class ,"creationAnnonceVetements"])->name('creationAnnonceVetements');
+
+
+
+Route::post('/AnnonceEnregistrer',[ShnController::class ,"enregistrerAnnonceVet"])->name('enregistrerAnnonceVet');
+
+
+
 require __DIR__.'/auth.php';
