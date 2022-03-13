@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DemandeurController;
 use App\Http\Controllers\ShnController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -31,8 +32,13 @@ Route::get('/ChoixCreationAnnonces', [ShnController::class ,"choixCreationAnnonc
 Route::get('/CreationAnnonceVetements', [ShnController::class ,"creationAnnonceVetements"])->name('creationAnnonceVetements');
 
 
-
 Route::post('/AnnonceEnregistrer',[ShnController::class ,"enregistrerAnnonceVet"])->name('enregistrerAnnonceVet');
+
+Route::get('/LesAnnonces', [DemandeurController::class ,"lesAnnonces"])->name('lesAnnonces');
+
+Route::get('/RechercherAnnonces', [DemandeurController::class ,"rechercherAnnonces"])->name('rechrcherAnnonces');
+
+Route::post('/searchResult', [DemandeurController::class ,"searchResult"])->name('searchResult');
 
 
 

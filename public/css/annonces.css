@@ -103,3 +103,18 @@ input[type='file'] {
 #btnRadio{
     display:none;
 }
+#labeleAnnoncetype{
+    cursor: pointer;
+    color: #ffffff;
+    font-weight: bold;
+}
+.titrePage {
+    color: white;
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top:20px ;
+    border: 2px solid white;
+}
+#typeOffre{
+    display: inline-block;
+}

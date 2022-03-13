@@ -91,7 +91,7 @@
                         <option value="ete">été</option>
                         <option value="Automne">Automne</option></select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <label id ="labeleAnnonceTitre" >Image de l'annonce :  </label>
-                    <input type="file" name="imageMatch">
+                    <input type="file" name="imageAnnonce">
                 </div>
                 <hr>
                 <!-- Button trigger modal -->
