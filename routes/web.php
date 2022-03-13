@@ -36,7 +36,7 @@ Route::post('/AnnonceEnregistrer',[ShnController::class ,"enregistrerAnnonceVet"
 
 Route::get('/LesAnnonces', [DemandeurController::class ,"lesAnnonces"])->name('lesAnnonces');
 
-Route::get('/RechercherAnnonces', [DemandeurController::class ,"rechercherAnnonces"])->name('rechrcherAnnonces');
+Route::get('/RechercherAnnonces', [DemandeurController::class ,"rechercherAnnonces"])->name('rechercherAnnonces');
 
 Route::post('/searchResult', [DemandeurController::class ,"searchResult"])->name('searchResult');
 

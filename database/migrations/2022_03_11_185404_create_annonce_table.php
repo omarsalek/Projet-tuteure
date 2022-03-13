@@ -18,6 +18,7 @@ class CreateAnnonceTable extends Migration
             $table->string('type', 25)->nullable();
             $table->date('date')->nullable();
             $table->integer('etatAnnonce')->nullable();
+            $table->text('photoAnnonce')->nullable();
             $table->integer('id')->index('FK_annonce_id');
             $table->integer('idVetement')->nullable()->index('FK_annonce_idVetement');
             $table->integer('idMateriel')->nullable()->index('FK_annonce_idMateriel');

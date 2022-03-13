@@ -118,3 +118,55 @@ input[type='file'] {
 #typeOffre{
     display: inline-block;
 }
+
+#idCard{
+    width: 17rem;
+    margin-bottom:5px;
+    text-align:center;
+    display:inline-block;
+}
+#imageAnnonce{
+    border-radius: 20px;
+    margin-top: 10px;
+    width:60%;
+    height: 60px;
+    margin-left: 20px;
+}
+#imageAnnonce img {
+    width:100%;
+    height: 100px;
+    margin-left: 35px;
+    border-radius: 10px;
+}
+#annonceConsChoix{
+    color: #ffffff;
+    text-decoration: none;
+}
+.SearchForm {
+    text-align: right;
+    display: inline;
+    padding: 0px 0px;
+    justify-content: center;
+
+}
+#searchRes {
+    border: none;
+    margin: 0;
+    display: inline-block;
+    line-height: 20px;
+    width:600px;
+
+}
+
+#td {
+    width: 300px;
+    text-align: center;
+    padding: 5px;
+
+}
+#SearchButton {
+    background-color: #ff0000;
+    border-radius: 10px;
+    line-height: 40px;
+    width: 40px;
+}

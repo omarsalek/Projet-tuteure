@@ -5571,6 +5571,7 @@ form.addEventListener('submit', function (e) {
   var token = document.querySelector('meta[name="csrf-token"]').content;
   var url = this.getAttribute('action');
   var searchRes = document.getElementById('searchRes').value;
+  var searchResListe = document.getElementById('searchResListe').value;
   fetch(url, {
     headers: {
       'Content-Type': 'application/json',
@@ -5578,11 +5579,16 @@ form.addEventListener('submit', function (e) {
     },
     method: 'post',
     body: JSON.stringify({
-      searchRes: searchRes
+      searchRes: searchRes,
+      searchResListe: searchResListe
     })
   }).then(function (response) {
     response.json().then(function (data) {
-      console.log(data);
+      var annonces = document.getElementById('annonces');
+      annonces.innerHTML = '';
+      Object.entries(data)[0][1].forEach(function (elements) {
+        annonces.innerHTML += "<div id=\"idCard\" >\n                                <div class=\"card-columns-fluid\" >\n                                    <div class=\"card  bg-light\" >\n                                        <div id=\"imageAnnonce\">\n                                            <img src=\"storage/imageAnnonces/".concat(elements.photoAnnonce, "\" />\n                                        </div>\n                                        <br>\n                                        <div class=\"card-body\">\n                                            <h5><b>").concat(elements.ville, "</b></h5>\n                                            <p>").concat(elements.date, "</b></p>\n                                            <div>\n                                                <button type=\"submit\" class=\"btn btn-info \"><a id=\"annonceConsChoix\" href='#'>Consulter</a></button>\n                                                <button type=\"submit\" class=\"btn btn-success \"><a id=\"annonceConsChoix\" href='#'>Choisir</a></button>\n                                            </div>\n                                        </div>\n                                    </div>\n                                </div>");
+      });
     });
   })["catch"](function (error) {
     console.log(error);

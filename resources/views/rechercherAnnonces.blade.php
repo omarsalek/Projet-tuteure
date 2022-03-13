@@ -6,62 +6,57 @@
     <h1 class="titrePage">Rechercher une annonce</h1>
     <div class="mb-3"> <a class="btn btn-primary" href="/LesAnnonces" role="button">Retour </a></div>
     <div class="row">
-        <div class="col-sm-0 col-md-2 col-lg-3"></div>
-        <div class="col-sm-12 col-md-8 col-lg-6">
-            <form class="row g-3" action = "{{ route('searchResult') }}" method="post" id="search-form">
-                <div id="typeOffre">
-                    <label id ="labeleAnnoncetype">Type Offre: </label>
-                    <select name="type" required>
+
+            <form  class="SearchForm" action = "{{ route('searchResult') }}" method="post" id="search-form">
+
+                <table style="margin:auto;">
+                <tr>
+                <td id="td"><div id="typeOffre">
+                    <select name="searchResListe" id="searchResListe">
                         <option value="vetements">Vetements</option>
                         <option value="chaussures">Chaussures</option>
                         <option value="materiels">Matériels</option>
                     </select>
-                </div>
-                <br><br><br><br><br>
-                <div class="col-auto">
-
-                <input class="form-control" type="text" id="searchRes" name="searchRes" value="" placeholder="Rechercher un ou plusieurs annonces">
-                </div>
-                <div class="col-auto">
-
-                <button type="submit"> recherche</button>
-                </div>
+                </div></td>
+                <td id="td"><input class="form-control" type="text" id="searchRes" name="searchRes" value="" placeholder="Rechercher un ou plusieurs annonces"></td>
+               <td id="td" ><button id="SearchButton" type="submit"> <i class="fas fa-search"></i></button></td>
+                </tr>
+                </table>
             </form>
-
-
-            <div style="margin-top:20px">
-                <div id="result-search-matchs"></div>
+            <br><br><br><br>
+            <div id ="annonces">
+                    @if (!empty($annonces))
+                    <div class="container">
+                        <div class="row">
+                            @foreach ($annonces as $annonce)
+                            <div id="idCard">
+                                <div class="card-columns-fluid" >
+                                    <div class="card  bg-light" >
+                                        <div id="imageAnnonce">
+                                            <img  src="{{URL('storage/imageAnnonces/'.$annonce->photoAnnonce)}}"  alt="Card image cap">
+                                        </div>
+                                        <br>
+                                        <div class="card-body">
+                                            <h5><b>{{$annonce->type}}</b></h5>
+                                            <p>{{$annonce->date}}</b></p>
+                                            <div>
+                                                <button type="submit" class="btn btn-info "><a id="annonceConsChoix" href='#'>Consulter</a></button>
+                                                <button type="submit" class="btn btn-success "><a id="annonceConsChoix" href='#'>Choisir</a></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    @else
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">Aucun annonces  n'a été créé pour le moment
+                        <a href="#" class="btn-close" role="button"></a>
+                    </div>
+                @endif
             </div>
         </div>
-    </div>
-</div>
+<script src="{{asset('js/app.js')}}"></script>
 
-<script src="{{asset('js/app.js')}}">
-
-
-
-</script>
-{{--
-<script>
-    $(document).ready(function (){
-        $('#search-match').keyup(function (){
-            var match = $(this).val();
-            $('#result-search-matchs').html('');
-            if(match != ""){
-                $.ajax({
-                    type:"GET",
-                    url:'index.php?module=ModMatchs&action=FiltrerMatchs',
-                    data: 'adresseMatch=' + encodeURIComponent(match),
-                    success: function(data){
-                        if(data != ""){
-                            $('#result-search-matchs').append(data);
-                        }else{
-                            document.getElementById('result-search-matchs').innerHTML = "<div style='font-size: 20px; text-align: center; margin-top: 10px; color :white;'>Aucun matchs</div>"
-                        }
-                    }
-                });
-            }
-        });
-    });
-</script>--}}
 @endsection

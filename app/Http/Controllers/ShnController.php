@@ -50,24 +50,25 @@ class ShnController extends Controller
                 'ville' => $request->input('ville')
             ]);
             $idLieu = DB::getPdo()->lastInsertId();;
+            #ImagInsert
+            $file = $request->file("imageAnnonce");
+            $extention = $file -> getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $path = $request->file('imageAnnonce')->storeAs(
+                'imageAnnonces',
+                $filename, 'public');
 
             $queryAnnonce = DB::table('annonce')->insert([
                 'date' => $request->input('dateAnnonce'),
                 'type' => $request->input('vetements'),
                 'id' => $user->id,
                 'etatAnnonce' => 0,
+                'photoAnnonce' => $filename ,
                 'idLieu' => $idLieu,
             ]);
             $idAnnonce = DB::getPdo()->lastInsertId();;
 
-            $file = $request->file("imageAnnonce");
-                $extention = $file -> getClientOriginalExtension();
-                $filename = time().'.'.$extention;
-                $path = $request->file('imageAnnonce')->storeAs(
-                    'imageAnnonces',
-                    $filename,
-                    'public');
-                $queryPhotos = DB::table('photovideo')->insert([
+            $queryPhotos = DB::table('photovideo')->insert([
                     'descriptionPhotVid' => $filename ]);
             $idPhoto = DB::getPdo()->lastInsertId();;
             $queryVoirPhoto = DB::table('voirphotovideo')->insert([

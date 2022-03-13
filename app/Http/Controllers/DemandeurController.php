@@ -14,13 +14,21 @@ class DemandeurController extends Controller
         return view('lesAnnonces', compact('user'));
     }
     public function rechercherAnnonces(){
-        return view('rechercherAnnonces');
+        $annonces = DB::table('annonce')->get();
+        return view('rechercherAnnonces',compact('annonces' ));
 
     }
     public function searchResult(Request $request):JsonResponse
     {
+        $searchResListe = $request->input('searchResListe');
+
         $searchRes=$request->input('searchRes');
-        $annonces = DB::table('annonce')->where('type','like','%'.$searchRes.'%')->get();
+
+        #->join('lieu','annonce.idLieu','=','lieu.idLieu')->orWhere('ville','like','%'.$searchRes.'%')
+        $annonces = DB::table('annonce')->where([
+            'type' => $searchResListe
+        ])->join('lieu','annonce.idLieu','=','lieu.idLieu')->where('ville','like','%'.$searchRes.'%')->get();
+
         return response()->json([
             'annonce'=>$annonces
         ]);
