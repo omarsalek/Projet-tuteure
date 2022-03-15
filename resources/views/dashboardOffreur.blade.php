@@ -107,8 +107,11 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="index.php?module=ModProfil&action=FormSuppProfil" class="btn btn-primary">Oui</a>
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Non</button>
+                                    <form  action="{{route('supprimerCompte',$user->id)}}" method="post">
+                                        @csrf
+                                        <button  type="submit" class="btn btn-primary">Oui</button>
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Non</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

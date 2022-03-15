@@ -16,7 +16,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get("/", [HomeController::class, "pageAccueil"]);
+Route::get("/", [HomeController::class, "pageAccueil"])->name('pageAccueil');
 
 Route::get('/ModificationsProfil', [HomeController::class ,"modificationProfil"]);
 
@@ -34,12 +34,18 @@ Route::get('/CreationAnnonceVetements', [ShnController::class ,"creationAnnonceV
 
 Route::post('/AnnonceEnregistrer',[ShnController::class ,"enregistrerAnnonceVet"])->name('enregistrerAnnonceVet');
 
+Route::get('/CreationAnnonceChaussures', [ShnController::class ,"creationAnnonceChaussures"])->name('creationAnnonceChaussures');
+
+
+Route::post('/AnnonceEnregistrerVet',[ShnController::class ,"enregistrerAnnonceChaus"])->name('enregistrerAnnonceChaus');
+
 Route::get('/LesAnnonces', [DemandeurController::class ,"lesAnnonces"])->name('lesAnnonces');
 
 Route::get('/RechercherAnnonces', [DemandeurController::class ,"rechercherAnnonces"])->name('rechercherAnnonces');
 
 Route::post('/searchResult', [DemandeurController::class ,"searchResult"])->name('searchResult');
 
+Route::post('/supprimerCompte{id}', [DemandeurController::class ,"supprimerCompte"])->name('supprimerCompte');
 
 
 require __DIR__.'/auth.php';

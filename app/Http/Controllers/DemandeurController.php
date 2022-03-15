@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,5 +33,13 @@ class DemandeurController extends Controller
         return response()->json([
             'annonce'=>$annonces
         ]);
+    }
+    public function supprimerCompte($id){
+        try{
+            User::destroy($id);
+            return redirect()->route('pageAccueil')->with('success', 'votre compte est supprimé!');
+        } catch (\Illuminate\Database\QueryException $ex) {
+            return redirect()->back()->with('danger', 'Erreur survenue !');
+        }
     }
 }
