@@ -21,7 +21,7 @@
                 <img id="imageChoix"  src="{{URL('images/watch.png')}}">
                 <h3 id="titleChoixAnnonce">Matériels</h3>
                 <br>
-                <button id="buttonStyleChoix" class="depo-3">Déposer Maintenant</button>
+                <button type="submit"  id="buttonStyleChoix" class="depo-3"><a  id="creerAnnonce" href="/CreationAnnonceMateriels">Déposer Maintenant</a></button>
             </div>
             <div class="contentChoix">
                 <img id="imageChoix" src="{{URL('images/vetements.png')}}">

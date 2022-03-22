@@ -28,10 +28,10 @@
                     </div>
 
                 @endif
-                <form  action="{{route('enregistrerAnnonceChaus')}}" method="post" enctype="multipart/form-data">
+                <form  action="{{route('enregistrerAnnonceMat')}}" method="post" enctype="multipart/form-data">
                     @CSRF
                     <div>
-                        <input id="btnRadio" type="radio" name="chaussures" value="chaussures" checked>
+                        <input id="btnRadio" type="radio" name="materiels" value="materiels" checked>
                     </div>
                     <br>
                     <div class="row mt-4 ">
@@ -47,13 +47,6 @@
                                    value='<?= date('Y-m-d');?>'
                                    min='<?= date('Y-m-d');?>' max="2050-01-01">
                         </div>
-                        <div>
-                            <label id ="labeleAnnonceTitre">Catégorie :  </label>
-                            <input type="radio" id="choix1" class="civilite" name="categorie" value="Homme">
-                            <label for="choix1" class="labelCivilite">Homme</label>
-                            <input type="radio" id="choix2" class="civilite" name="categorie" value="Femme">
-                            <label for="choix2" class="labelCivilite">Femme</label>
-                        </div>
                     </div>
 
                     <div class="row mt-4 ">
@@ -65,42 +58,20 @@
                     <div class="row mt-4 ">
                         <br>
                         <div class="col-md-6"><input type="text" class="form-control" name="marque" placeholder="Marque"></div>
-                        <div class="col-md-6"><input type="text" class="form-control" name="couleur" placeholder="Couleur"></div>
+                        <!-- Age -->
+                        <div class="col-md-6"><input type="number" id="form3Example5" class="form-control form-control-lg"  placeholder="Entrer un age" name="ageMat" required/></div>
                     </div>
                     <br>
                     <div>
                         <label id ="labeleAnnonceTitre">État: </label>
-                        <select name="etatVetChauss" required>
+                        <select name="etatMat" required>
                             <option value="Neuf">Neuf</option>
                             <option value="TresBonEtat"> Très bon état : </option>
                             <option value="BonEtat">Bon état</option>
                             <option value="Satisfaisant">Satisfaisant</option>
                         </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label id ="labeleAnnonceTitre">Pointure : </label>
-                        <select name="taille" required>
-                            <option value="45">45</option>
-                            <option value="44">44</option>
-                            <option value="43">43</option>
-                            <option value="42">42</option>
-                            <option value="41">41</option>
-                            <option value="40">40</option>
-                            <option value="39">39</option>
-                            <option value="38">38</option>
-                            <option value="37">37</option>
-                            <option value="37">37</option>
-                            <option value="35">35</option>
-                            <option value="34">34</option>
-                            <option value="33">33</option>
-                        </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label id ="labeleAnnonceTitre">Saison : </label>
-                        <select name="saison" required>
-                            <option value="Hiver">Hiver</option>
-                            <option value="Printemps">Printemps</option>
-                            <option value="ete">été</option>
-                            <option value="Automne">Automne</option></select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <label id ="labeleAnnonceTitre" >Photo:  </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <input type="file" name="imageAnnonce">
-
                     </div>
                     <hr>
                     <!-- Button trigger modal -->
@@ -116,13 +87,12 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-footer">
-                                    <button class="btn btn-primary" name="CreerAnnonceVetements">Oui</button>
+                                    <button class="btn btn-primary" name="CreerAnnonceMateriels">Oui</button>
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Non</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </form>
             </div>
         </div>

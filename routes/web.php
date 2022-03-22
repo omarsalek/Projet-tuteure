@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DemandeurController;
+use App\Http\Controllers\GererOffre;
 use App\Http\Controllers\ShnController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -39,6 +40,12 @@ Route::get('/CreationAnnonceChaussures', [ShnController::class ,"creationAnnonce
 
 Route::post('/AnnonceEnregistrerVet',[ShnController::class ,"enregistrerAnnonceChaus"])->name('enregistrerAnnonceChaus');
 
+Route::get('/CreationAnnonceMateriels', [ShnController::class ,"creationAnnonceMateriels"])->name('creationAnnonceMateriels');
+
+Route::post('/AnnonceEnregistrerMat',[ShnController::class ,"enregistrerAnnonceMat"])->name('enregistrerAnnonceMat');
+
+
+
 Route::get('/LesAnnonces', [DemandeurController::class ,"lesAnnonces"])->name('lesAnnonces');
 
 Route::get('/RechercherAnnonces', [DemandeurController::class ,"rechercherAnnonces"])->name('rechercherAnnonces');
@@ -46,6 +53,10 @@ Route::get('/RechercherAnnonces', [DemandeurController::class ,"rechercherAnnonc
 Route::post('/searchResult', [DemandeurController::class ,"searchResult"])->name('searchResult');
 
 Route::post('/supprimerCompte{id}', [DemandeurController::class ,"supprimerCompte"])->name('supprimerCompte');
+
+//Offre Gerer
+
+Route::post('/consulterAnnonce',[GererOffre::class ,"consulterOffre"])->name('consulterOffre');
 
 
 require __DIR__.'/auth.php';

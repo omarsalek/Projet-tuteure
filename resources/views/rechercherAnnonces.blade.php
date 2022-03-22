@@ -8,17 +8,18 @@
     <div class="row">
 
             <form  class="SearchForm" action = "{{ route('searchResult') }}" method="post" id="search-form">
-
+                @csrf
                 <table style="margin:auto;">
                 <tr>
                 <td id="td"><div id="typeOffre">
                     <select name="searchResListe" id="searchResListe">
+                        <option value="tousAnnonces"></option>
                         <option value="vetements">Vetements</option>
                         <option value="chaussures">Chaussures</option>
                         <option value="materiels">Matériels</option>
                     </select>
                 </div></td>
-                <td id="td"><input class="form-control" type="text" id="searchRes" name="searchRes" value="" placeholder="Rechercher un ou plusieurs annonces"></td>
+                <td id="td"><input class="form-control" type="text" id="searchRes" name="searchRes" placeholder="Rechercher par lieu un ou plusieurs annonces"></td>
                <td id="td" ><button id="SearchButton" type="submit"> <i class="fas fa-search"></i></button></td>
                 </tr>
                 </table>
@@ -37,11 +38,14 @@
                                         </div>
                                         <br>
                                         <div class="card-body">
-                                            <h5><b>{{$annonce->type}}</b></h5>
+                                            <h5><b>{{$annonce->ville}}</b></h5>
                                             <p>{{$annonce->date}}</b></p>
                                             <div>
-                                                <button type="submit" class="btn btn-info "><a id="annonceConsChoix" href='#'>Consulter</a></button>
+                                                <form  action="{{ route('consulterOffre')}}" method="post">
+                                                @csrf
+                                                <button type="submit" class="btn btn-info "><input type="hidden" id="annonceConsChoix" name="idAnnonce" value="{{ $annonce->idAnnonce  }}">Consulter</button>
                                                 <button type="submit" class="btn btn-success "><a id="annonceConsChoix" href='#'>Choisir</a></button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -57,6 +61,5 @@
                 @endif
             </div>
         </div>
-<script src="{{asset('js/app.js')}}"></script>
 
 @endsection

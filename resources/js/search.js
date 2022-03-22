@@ -24,7 +24,7 @@ form.addEventListener('submit', function (e) {
                 const annonces = document.getElementById('annonces');
                 annonces.innerHTML = '';
                 Object.entries(data)[0][1].forEach(elements=>{
-                    annonces.innerHTML +=`<div id="idCard" >
+                    annonces.innerHTML +=`&nbsp;<div id="idCard" >
                                 <div class="card-columns-fluid" >
                                     <div class="card  bg-light" >
                                         <div id="imageAnnonce">
@@ -34,13 +34,15 @@ form.addEventListener('submit', function (e) {
                                         <div class="card-body">
                                             <h5><b>${elements.ville}</b></h5>
                                             <p>${elements.date}</b></p>
-                                            <div>
-                                                <button type="submit" class="btn btn-info "><a id="annonceConsChoix" href='#'>Consulter</a></button>
+                                              <div>
+                                                <form  action="{{ route('consulterOffre')}}" method="post">
+                                                <button type="submit" class="btn btn-info "><input type="hidden" id="annonceConsChoix" name="idAnnonce" value="{{ $annonce->idAnnonce  }}">Consulter</button>
                                                 <button type="submit" class="btn btn-success "><a id="annonceConsChoix" href='#'>Choisir</a></button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
-                                </div>`
+                                </div>&nbsp;`
 
                     })
                 })

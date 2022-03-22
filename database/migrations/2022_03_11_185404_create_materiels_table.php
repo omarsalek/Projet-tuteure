@@ -15,7 +15,6 @@ class CreateMaterielsTable extends Migration
     {
         Schema::create('materiels', function (Blueprint $table) {
             $table->integer('idMateriel', true);
-            $table->string('titre', 250)->nullable();
             $table->string('marque', 25);
             $table->smallInteger('ageMat');
             $table->string('etatMat', 25)->nullable();

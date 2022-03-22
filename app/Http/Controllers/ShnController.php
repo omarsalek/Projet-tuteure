@@ -102,7 +102,9 @@ class ShnController extends Controller
 
             return redirect()->back()->with('success', 'votre annonce est enregistrée!');
         } catch (\Illuminate\Database\QueryException $ex) {
-            return redirect()->back()->with('danger', 'Erreur survenue !');
+            dd($ex);
+            exit();
+            return redirect()->back()->with('danger', 'Erreur survenue ! ');
         }
     }
     public function enregistrerAnnonceChaus(Request $request){
@@ -179,6 +181,79 @@ class ShnController extends Controller
         } catch (\Illuminate\Database\QueryException $ex) {
             return redirect()->back()->with('danger', 'Erreur survenue !');
         }
+    }
+    public function creationAnnonceMateriels(){
+        return view('creationAnnonceMateriels');
+    }
+    public function enregistrerAnnonceMat(Request $request){
+        $user = Auth::user();
+        try {
+
+            $request->validate([
+                'adresse' => 'required',
+                'ville' => 'required',
+                'dateAnnonce' => 'required',
+                'imageAnnonce' =>'required',
+                'titre'=>'required',
+                'marque'=>'required',
+                'ageMat'=>'required',
+                'etatMat'=>'required',
+                'description'=>'required'
+            ]);
+
+            $queryLieu = DB::table('lieu')->insert([
+                'adresse' => $request->input('adresse'),
+                'ville' => $request->input('ville')
+            ]);
+            $idLieu = DB::getPdo()->lastInsertId();;
+            #ImagInsert
+            $file = $request->file("imageAnnonce");
+            $extention = $file -> getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $path = $request->file('imageAnnonce')->storeAs(
+                'imageAnnonces',
+                $filename, 'public');
+
+            $queryAnnonce = DB::table('annonce')->insert([
+                'date' => $request->input('dateAnnonce'),
+                'type' => $request->input('materiels'),
+                'id' => $user->id,
+                'etatAnnonce' => 0,
+                'photoAnnonce' => $filename ,
+                'idLieu' => $idLieu,
+            ]);
+            $idAnnonce = DB::getPdo()->lastInsertId();;
+
+            $queryPhotos = DB::table('photovideo')->insert([
+                'descriptionPhotVid' => $filename ]);
+            $idPhoto = DB::getPdo()->lastInsertId();;
+            $queryVoirPhoto = DB::table('voirphotovideo')->insert([
+                'idAnnonce' => $idAnnonce,
+                'idPhoto'=>$idPhoto
+            ]);
+            $queryTitre = DB::table('typemateriel')->insert([
+                'libelleMat' => $request->input('titre')
+            ]);
+            $idTypeMat = DB::getPdo()->lastInsertId();;
+            $queryMatAnnonce= DB::table('materiels')->insert([
+                'marque' => $request->input('marque'),
+                'ageMat' => $request->input('ageMat'),
+                'etatMat' => $request->input('etatMat'),
+                'descriptionMat' => $request->input('description'),
+                'idAnnonce'=>$idAnnonce,
+                'idTypMat'=>$idTypeMat
+            ]);
+            $idMat = DB::getPdo()->lastInsertId();;
+            $queryUpdateAnnonce = DB::table('annonce')->where('idAnnonce',$idAnnonce)->update([
+                'idMateriel' => $idMat
+            ]);
+
+
+            return redirect()->back()->with('success', 'votre annonce est enregistrée!');
+        } catch (\Illuminate\Database\QueryException $ex) {
+            return redirect()->back()->with('danger', 'Erreur survenue !');
+        }
+
     }
 
 }

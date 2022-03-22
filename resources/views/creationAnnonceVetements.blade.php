@@ -36,8 +36,8 @@
                 <br>
                 <div class="row mt-4 ">
                     <br>
-                    <div class="col-md-6"><input type="text" class="form-control" name="titre" placeholder="Titre"></div>
-                    <div class="col-md-6"><input type="text" class="form-control" name="description" placeholder="Description"></div>
+                    <div class="col-md-6"><input type="text" maxlength="60" class="form-control" name="titre" placeholder="Titre"></div>
+                    <div class="col-md-6"><input type="text" maxlength="60" class="form-control" name="description" placeholder="Description"></div>
                 </div>
                 <br>
                 <div class="form-outline mb-4">
@@ -90,7 +90,7 @@
                         <option value="Printemps">Printemps</option>
                         <option value="ete">été</option>
                         <option value="Automne">Automne</option></select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label id ="labeleAnnonceTitre" >Image de l'annonce :  </label>
+                    <label id ="labeleAnnonceTitre">Photo : </label>
                     <input type="file" name="imageAnnonce">
                 </div>
                 <hr>

@@ -1,5 +1,5 @@
  <header>
-        <nav id="navbar-example3" class="navbar navbar-expand-lg navbar-dark" style="background-color:#8565fc;" >
+        <nav id="navbar-example3" class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(7, 13, 161);" >
             <div class="container-fluid">
                 <a class="navbar-brand" href="/" id="titre">Rameurs Tricolores Donations</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
