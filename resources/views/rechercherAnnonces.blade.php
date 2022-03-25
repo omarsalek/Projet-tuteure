@@ -7,7 +7,7 @@
     <div class="mb-3"> <a class="btn btn-primary" href="/LesAnnonces" role="button">Retour </a></div>
     <div class="row">
 
-            <form  class="SearchForm" action = "{{ route('searchResult') }}" method="post" id="search-form">
+            <form  class="SearchForm" action = "{{ route('searchResult') }}" method="post">
                 @csrf
                 <table style="margin:auto;">
                 <tr>
@@ -25,6 +25,26 @@
                 </table>
             </form>
             <br><br><br><br>
+        @if(Session::has('success'))
+            <div class="alert alert-success">
+                {{ Session::get('success') }}
+            </div>
+        @elseif ($errors->any())
+            <div class="form-group">
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @elseif(Session::has('danger'))
+            <div class="alert alert-danger">
+                {{ Session::get('danger') }}
+            </div>
+
+        @endif
             <div id ="annonces">
                     @if (!empty($annonces))
                     <div class="container">
@@ -41,10 +61,13 @@
                                             <h5><b>{{$annonce->ville}}</b></h5>
                                             <p>{{$annonce->date}}</b></p>
                                             <div>
-                                                <form  action="{{ route('consulterOffre')}}" method="post">
+                                                <form  id="formCons" action="{{ route('consulterOffre')}}" method="post">
                                                 @csrf
                                                 <button type="submit" class="btn btn-info "><input type="hidden" id="annonceConsChoix" name="idAnnonce" value="{{ $annonce->idAnnonce  }}">Consulter</button>
-                                                <button type="submit" class="btn btn-success "><a id="annonceConsChoix" href='#'>Choisir</a></button>
+                                                </form>
+                                                <form id="formChoix" action="{{ route('choisirOffre')}}" method="post">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-success "><input type="hidden" id="annonceConsChoix" name="idAnnonce" value="{{ $annonce->idAnnonce  }}">Choisir</button>
                                                 </form>
                                             </div>
                                         </div>

@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="mt-3 btn-group-vertical">
-                    <button type="submit" class="btn btn-danger "><a id="mesAnnonces" href='?module=ModMatchs&action=MesMatchs&i'>Mes Annonces</a></button>
+                    <button type="submit" class="btn btn-danger "><a id="mesAnnonces" href='/MesAnnonces'>Mes Annonces</a></button>
                     <button type="submit" class="btn btn-warning "><a id="creerAnnonce" href='/ChoixCreationAnnonces'>Créer une Annonce</a></button>
                 </div>
             </div>

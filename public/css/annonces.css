@@ -141,6 +141,20 @@ input[type='file'] {
 #annonceConsChoix{
     color: #ffffff;
     text-decoration: none;
+
+}
+#formCons{
+    float: left;
+    display: inline-block;
+}
+#formChoix{
+    float: right;
+    margin-left: 20px;
+}
+#annonceConsChoix2{
+    color: #ffffff;
+    text-decoration: none;
+    float: right;
 }
 .SearchForm {
     text-align: right;

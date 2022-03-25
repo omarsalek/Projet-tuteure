@@ -5,7 +5,7 @@
     <div class="container rounded bg-light mt-3 " >
         <div class="row">
             <div class="d-wrapper mt-3 flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mr mb-1"></i>
-                <a href="/RechercherAnnonces" class="btn btn-info" role="button">Revenir au choix</a>
+                <a href="/MesAnnonces" class="btn btn-info" role="button">Revenir au choix</a>
                 <br>
                 <br>
                 @if(Session::has('success'))
@@ -48,16 +48,32 @@
                                     <div class="row">
 
                                         <div class="col-lg-6 pb-2">
-
-                                        <form id="formChoix" action="{{ route('choisirOffre')}}" method="post">
-                                            @csrf
-                                            <button type="submit" class="btn btn-danger w-100"><input type="hidden"  name="idAnnonce" value="{{ $annonce->idAnnonce  }}">Choisir</button>
-
-                                        </form>
-                                            <div class="col-lg-6">
-                                                <a href="#" class="btn btn-success w-100">Voir Photos</a>
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Ajouter une photo </button>
+                                        </div>
+                                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Ajouter une photo dans la galerie</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form  action="{{route('ajouterPhotos')}}" method="post" enctype="multipart/form-data">
+                                                            @csrf
+                                                            <div id="InputImageMatch">
+                                                                <input type="file" name="photoAajouterAnnonce">
+                                                                <input type="hidden"  name="idAnnonce" value="{{ $annonce->idAnnonce  }}">
+                                                                <br><br>
+                                                                <div class="btnAjouterPhoto"><button  type="submit" class="btn btn-primary"  name="ajouterPhotos" class="mr-3" >Ajouter Photo</button></div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
                                             </div>
-
+                                        </div>
                                     </div>
                                 </div>
                             </div>

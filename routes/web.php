@@ -28,7 +28,11 @@ Route::get('dashboard',[HomeController::class,"profilInformations"])->middleware
 
 Route::get('/GererAnnonces', [ShnController::class ,"gererAnnonces"])->name('gererAnnonces');
 
+
+Route::get('/MesAnnonces', [ShnController::class ,"mesAnnonces"])->name('MesAnnonces');
+
 Route::get('/ChoixCreationAnnonces', [ShnController::class ,"choixCreationAnnonces"])->name('choixCreationAnnonces');
+
 
 Route::get('/CreationAnnonceVetements', [ShnController::class ,"creationAnnonceVetements"])->name('creationAnnonceVetements');
 
@@ -58,5 +62,10 @@ Route::post('/supprimerCompte{id}', [DemandeurController::class ,"supprimerCompt
 
 Route::post('/consulterAnnonce',[GererOffre::class ,"consulterOffre"])->name('consulterOffre');
 
+Route::post('/consulterOffreSHN',[ShnController::class ,"consulterOffreSHN"])->name('consulterOffreSHN');
+
+Route::post('/RechercherAnnonces',[GererOffre::class ,"choisirOffre"])->name('choisirOffre');
+
+Route::post('/ajouterPhotos',[ShnController::class,"ajouterPhotos"])->name('ajouterPhotos');
 
 require __DIR__.'/auth.php';

@@ -24,11 +24,17 @@ class DemandeurController extends Controller
         $searchResListe = $request->input('searchResListe');
 
         $searchRes=$request->input('searchRes');
+        if ($searchResListe=='tousAnnonces'){
+            $annonces = DB::table('annonce')->join('lieu','annonce.idLieu','=','lieu.idLieu')->where('ville','like','%'.$searchRes.'%')->get();
+            return  view('rechercherAnnonces',compact('annonces' ));
 
-        $annonces = DB::table('annonce')->join('lieu','annonce.idLieu','=','lieu.idLieu')->where('ville','like','%'.$searchRes.'%')->where([
-            'type' => $searchResListe ])->get();
+        }
+        else {
+            $annonces = DB::table('annonce')->join('lieu', 'annonce.idLieu', '=', 'lieu.idLieu')->where('ville', 'like', '%' . $searchRes . '%')->where([
+                'type' => $searchResListe])->get();
+            return view('rechercherAnnonces', compact('annonces'));
 
-          return  view('rechercherAnnonces',compact('annonces' ));
+        }
     }
     public function supprimerCompte($id){
         try{

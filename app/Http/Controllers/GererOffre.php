@@ -25,4 +25,27 @@ class GererOffre extends Controller
         }
     }
 
+    public function choisirOffre(Request $request){
+        try{
+            $request->validate([
+                'idAnnonce' => 'required',
+            ]);
+            $idAnnonce = $request->input('idAnnonce');
+            $user = Auth::user();
+
+            DB::table('annonce')->where([
+                'idAnnonce' => $idAnnonce])->update([
+                'etatAnnonce' => 1 ]);
+            DB::table('choisir')->insert(['id'=>$user->getAuthIdentifier(),
+                                        'idAnnonce'=>$idAnnonce
+                    ]);
+                 return redirect('RechercherAnnonces')->with('success', 'votre demande est bien envoyée!');
+
+        } catch (\Illuminate\Database\QueryException $ex) {
+
+            return redirect('RechercherAnnonces')->with('danger', 'Votre demande est déja envoyée!');
+
+        }
+    }
+
 }

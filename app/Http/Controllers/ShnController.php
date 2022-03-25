@@ -255,5 +255,59 @@ class ShnController extends Controller
         }
 
     }
+    public function mesAnnonces(){
+        $user = Auth::user();
+        $id = $user->getAuthIdentifier();
+        $array = explode(' ', $id);
+
+        $mesannonce = DB::select('select * from annonce where id = ?',$array);
+        return view('mesAnnonces',['annonces' => $mesannonce]);
+    }
+
+    public function consulterOffreSHN(Request $request){
+        $request->validate([ 'idAnnonce' => 'required' ]);
+        $id = $request->input('idAnnonce');
+        $annonce = DB::select('select idVetement from annonce where idAnnonce = ?',[$id]);
+
+        if (($annonce[0]->idVetement)!=null){
+            $annonceReq = DB::select('select * from annonce natural join vetementchaussure natural join lieu where idAnnonce = ?',[$id]);
+            return view('annonceDetailsSHN',['annonce' => $annonceReq]);
+
+        }else{
+            $annonceReq = DB::select('select * from annonce natural join materiels natural join lieu where idAnnonce = ?', [$id]) ;
+            return view('annonceDetailsSHN2',['annonce' => $annonceReq]);
+
+        }
+    }
+    public function ajouterPhotos(Request $request){
+
+        try {
+        $request->validate([
+            'photoAajouterAnnonce' =>'required',
+            'idAnnonce' => 'required']);
+        #ImagInsert
+        $file = $request->file("photoAajouterAnnonce");
+        $extention = $file -> getClientOriginalExtension();
+        $filename = time().'.'.$extention;
+
+        $idAnnonce = $request->input('idAnnonce');
+
+        $path = $request->file('photoAajouterAnnonce')->storeAs(
+            'imageAnnonces',
+            $filename, 'public');
+
+        $queryPhotos = DB::table('photovideo')->insert([
+            'descriptionPhotVid' => $filename ]);
+        $idPhoto = DB::getPdo()->lastInsertId();;
+        $queryVoirPhoto = DB::table('voirphotovideo')->insert([
+            'idAnnonce' => $idAnnonce,
+            'idPhoto'=>$idPhoto
+        ]);
+        return  redirect('MesAnnonces')->with('success', 'La photo est bien été ajouté dans votre gallerie!');
+        } catch (\Illuminate\Database\QueryException $ex)
+        {
+        return redirect('MesAnnonces')->with('danger', 'Erreur survenue !');
+        }
+    }
 
 }
