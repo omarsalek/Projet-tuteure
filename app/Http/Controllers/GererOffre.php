@@ -36,7 +36,7 @@ class GererOffre extends Controller
             DB::table('annonce')->where([
                 'idAnnonce' => $idAnnonce])->update([
                 'etatAnnonce' => 1 ]);
-            DB::table('choisir')->insert(['id'=>$user->getAuthIdentifier(),
+            DB::table('choisir')->insert(['idchoix'=>$user->getAuthIdentifier(),
                                         'idAnnonce'=>$idAnnonce
                     ]);
                  return redirect('RechercherAnnonces')->with('success', 'votre demande est bien envoyée!');
@@ -46,6 +46,18 @@ class GererOffre extends Controller
             return redirect('RechercherAnnonces')->with('danger', 'Votre demande est déja envoyée!');
 
         }
+    }
+    public function voirPhotos(Request $request){
+        $request->validate([
+            'idAnnonce' => 'required',
+        ]);
+
+        $idAnnonce = $request->input('idAnnonce');
+        $array = explode(' ', $idAnnonce);
+
+        $annoncesPhotos = DB::select('select * from photovideo natural join voirphotovideo where idAnnonce = ?', $array) ;
+
+        return view('photosAnnonces', compact('annoncesPhotos' ));
     }
 
 }

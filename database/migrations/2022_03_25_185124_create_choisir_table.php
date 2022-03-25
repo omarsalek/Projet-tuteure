@@ -14,9 +14,10 @@ class CreateChoisirTable extends Migration
     public function up()
     {
         Schema::create('choisir', function (Blueprint $table) {
-            $table->integer('id');
+            $table->integer('idchoix');
             $table->integer('idAnnonce')->index('FK_choisir_idAnnonce');
-            $table->primary(['id', 'idAnnonce']);
+
+            $table->primary(['idchoix', 'idAnnonce']);
         });
     }
 

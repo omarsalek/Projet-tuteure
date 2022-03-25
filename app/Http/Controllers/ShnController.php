@@ -65,7 +65,7 @@ class ShnController extends Controller
             $queryAnnonce = DB::table('annonce')->insert([
                 'date' => $request->input('dateAnnonce'),
                 'type' => $request->input('vetements'),
-                'id' => $user->id,
+                'iduser' => $user->id,
                 'etatAnnonce' => 0,
                 'photoAnnonce' => $filename ,
                 'idLieu' => $idLieu,
@@ -142,7 +142,7 @@ class ShnController extends Controller
             $queryAnnonce = DB::table('annonce')->insert([
                 'date' => $request->input('dateAnnonce'),
                 'type' => $request->input('chaussures'),
-                'id' => $user->id,
+                'iduser' => $user->id,
                 'etatAnnonce' => 0,
                 'photoAnnonce' => $filename ,
                 'idLieu' => $idLieu,
@@ -217,7 +217,7 @@ class ShnController extends Controller
             $queryAnnonce = DB::table('annonce')->insert([
                 'date' => $request->input('dateAnnonce'),
                 'type' => $request->input('materiels'),
-                'id' => $user->id,
+                'iduser' => $user->id,
                 'etatAnnonce' => 0,
                 'photoAnnonce' => $filename ,
                 'idLieu' => $idLieu,
@@ -260,7 +260,7 @@ class ShnController extends Controller
         $id = $user->getAuthIdentifier();
         $array = explode(' ', $id);
 
-        $mesannonce = DB::select('select * from annonce where id = ?',$array);
+        $mesannonce = DB::select('select * from annonce where iduser = ?',$array);
         return view('mesAnnonces',['annonces' => $mesannonce]);
     }
 
@@ -307,6 +307,35 @@ class ShnController extends Controller
         } catch (\Illuminate\Database\QueryException $ex)
         {
         return redirect('MesAnnonces')->with('danger', 'Erreur survenue !');
+        }
+    }
+    public function consulterDemandesDesUsers(){
+        $user = Auth::user();
+        $id = $user->getAuthIdentifier();
+        $array = explode(' ', $id);
+        $mesDemandesUsers = DB::select('select * from choisir inner join annonce on annonce.idAnnonce = choisir.idAnnonce inner join users on users.id = choisir.idchoix where annonce.etatAnnonce!=2 and annonce.iduser = ?',$array);
+        return view('lesDemandes',['mesDemandesUsers' => $mesDemandesUsers]);
+    }
+    public function affecterAnnonce(Request $request){
+        try {
+
+            $request->validate([
+                'idchoix' => 'required',
+                'idAnnonce' => 'required'
+            ]);
+
+        DB::table('affecter')->insert([
+            'id'=>$request->input('idchoix'),
+            'idAnnonce'=>$request->input('idAnnonce')
+        ]);
+        $idAnnonce= $request->input('idAnnonce');
+        DB::table('annonce')->where('idAnnonce','=',$idAnnonce)->update([
+            'etatAnnonce'=>2
+        ]);
+            return  redirect()->back()->with('success', 'vous avez bien affecté votre annonce , vous pouvez prendre un rdv avec le demandeur!');
+        } catch (\Illuminate\Database\QueryException $ex)
+        {
+            return redirect()->back()->with('danger', 'Erreur survenue !');
         }
     }
 

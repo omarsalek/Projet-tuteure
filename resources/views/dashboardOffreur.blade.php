@@ -24,7 +24,7 @@
                 <ul class="profile-header-tab nav nav-tabs">
                     <li class="nav-item"><a href="#profile" class="nav-link" name="profil" data-toggle="tab" id="titreInformationProfil">Information</a></li>
                     <li class="nav-item"><a href="/GererAnnonces" class="nav-link " data-toggle="tab">Gérer Annonces</a></li>
-                    <li class="nav-item"><a href="" class="nav-link " data-toggle="tab">Les Demandes</a></li>
+                    <li class="nav-item"><a href="/DemandesRecues" class="nav-link " data-toggle="tab">Mes demandes reçues </a></li>
                 </ul>
             </div>
             <div class="tab-pane fade active show" id="profile"></div>

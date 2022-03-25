@@ -57,9 +57,10 @@
                                                 <button type="submit" class="btn btn-danger w-100"><input type="hidden"  name="idAnnonce" value="{{ $annonce->idAnnonce  }}">Choisir</button>
 
                                             </form>
-                                            <div class="col-lg-6">
-                                                <a href="#" class="btn btn-success w-100">Voir Photos</a>
-                                            </div>
+                                            <form id="formChoix" action="{{ route('voirPhotos')}}" method="post">
+                                                @csrf
+                                                <button type="submit" class="btn btn-success w-100"><input type="hidden"  name="idAnnonce" value="{{ $annonce->idAnnonce  }}">Voir Photos</button>
+                                            </form>
 
                                         </div>
                                     </div>

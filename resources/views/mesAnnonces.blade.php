@@ -4,7 +4,7 @@
 
     <div class="container">
         <h1 class="titrePage">Mes annonces</h1>
-        <div class="mb-3"> <a class="btn btn-primary" href="/LesAnnonces" role="button">Retour </a></div>
+        <div class="mb-3"> <a class="btn btn-primary" href="/GererAnnonces" role="button">Retour </a></div>
         <div class="row">
             <br><br><br><br>
             @if(Session::has('success'))

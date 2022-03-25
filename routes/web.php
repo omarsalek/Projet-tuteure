@@ -68,4 +68,10 @@ Route::post('/RechercherAnnonces',[GererOffre::class ,"choisirOffre"])->name('ch
 
 Route::post('/ajouterPhotos',[ShnController::class,"ajouterPhotos"])->name('ajouterPhotos');
 
+Route::post('/voirPhotos',[GererOffre::class,"voirPhotos"])->name('voirPhotos');
+
+Route::get('/DemandesRecues', [ShnController::class ,"consulterDemandesDesUsers"])->name('DemandesRecues');
+
+Route::post('/affecterAnnonce', [ShnController::class ,"affecterAnnonce"])->name('affecterAnnonce');
+
 require __DIR__.'/auth.php';
