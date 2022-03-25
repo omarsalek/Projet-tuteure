@@ -57,7 +57,6 @@
                                          <form id="formChoix" action="{{ route('voirPhotos')}}" method="post">
                                                 @csrf
                                                 <button type="submit" class="btn btn-success w-100"><input type="hidden"  name="idAnnonce" value="{{ $annonce->idAnnonce  }}">Voir Photos</button>
-
                                          </form>
 
                                     </div>

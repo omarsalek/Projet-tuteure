@@ -338,5 +338,26 @@ class ShnController extends Controller
             return redirect()->back()->with('danger', 'Erreur survenue !');
         }
     }
+    public function refuserAnnonce(Request $request){
+        try {
+
+            $request->validate([
+                'idchoix' => 'required',
+                'idAnnonce' => 'required'
+            ]);
+            $idChoix = explode(' ', $request->input('idchoix'));
+            $idAnnonce= explode(' ', $request->input('idAnnonce'));
+            DB::table('choisir')->where('idchoix', $idChoix)->where('idAnnonce', $idAnnonce)->delete();
+
+            DB::table('annonce')->where('idAnnonce','=',$idAnnonce)->update([
+                'etatAnnonce'=>1
+            ]);
+
+            return  redirect()->back()->with('success', 'vous avez bien refusé cette demande !');
+        } catch (\Illuminate\Database\QueryException $ex)
+        {
+            return redirect()->back()->with('danger', 'Erreur survenue !');
+        }
+    }
 
 }

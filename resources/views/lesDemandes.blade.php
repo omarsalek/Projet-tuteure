@@ -51,13 +51,18 @@
                         <img src="{{URL('storage/imageAnnonces/'.$value->photoAnnonce)}}"  alt="Card image cap">
                     </div></td>
                 <td>
-                    <a href='#' role="button" class="btn btn-danger">Refuser</a>
 
                 <form id="formChoix" action="{{ route('affecterAnnonce')}}" method="post">
                         @csrf
                         <input type="hidden"  name="idchoix" value="{{ $value->idchoix  }}">
                         <button type="submit" class="btn btn-success w-100"><input type="hidden"  name="idAnnonce" value="{{ $value->idAnnonce  }}">Accepter</button>
-                </form></td>
+                </form>
+                <form id="formChoix" action="{{ route('refuserAnnonce')}}" method="post">
+                        @csrf
+                        <input type="hidden"  name="idchoix" value="{{ $value->idchoix  }}">
+                        <button type="submit" class="btn btn-danger w-100"><input type="hidden"  name="idAnnonce" value="{{ $value->idAnnonce  }}">Refuser</button>
+                </form>
+                </td>
 
 
             </tr>
@@ -67,7 +72,7 @@
     @else
         <div class="alert alert-danger mt-5">Aucun personne n'a encor choisi vos annonces </div>
         <div class="float-end">
-            <a class="btn btn-danger" href="index.php?module=ModProfil&action=Profil" role="button">Revenir au profil</a>
+            <a class="btn btn-danger" href="/dashboard" role="button">Revenir au profil</a>
         </div>
     @endif
      </div>

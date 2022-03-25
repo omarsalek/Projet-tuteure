@@ -74,4 +74,6 @@ Route::get('/DemandesRecues', [ShnController::class ,"consulterDemandesDesUsers"
 
 Route::post('/affecterAnnonce', [ShnController::class ,"affecterAnnonce"])->name('affecterAnnonce');
 
+Route::post('/refuserAnnonce', [ShnController::class ,"refuserAnnonce"])->name('refuserAnnonce');
+
 require __DIR__.'/auth.php';
