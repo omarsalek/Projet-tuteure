@@ -34,9 +34,9 @@
         <thead class="bg-info text-white">
         <tr>
             <th scope="col">Demandeur</th>
-            <th scope="col">Type Annonce</th>
+            <th scope="col">Type</th>
             <th scope="col">Date</th>
-            <th scope="col">Image</th>
+            <th scope="col">Photo</th>
             <th scope="col">Etats Annonce</th>
         </tr>
         </thead>

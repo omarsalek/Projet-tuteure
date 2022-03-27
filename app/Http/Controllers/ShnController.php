@@ -359,5 +359,12 @@ class ShnController extends Controller
             return redirect()->back()->with('danger', 'Erreur survenue !');
         }
     }
+    public function mesrendezvous(){
+        $user = Auth::user();
+        $id = $user->getAuthIdentifier();
+        $array = explode(' ', $id);
+        $mesRendezVous = DB::select('select * from affecter inner join annonce on annonce.idAnnonce = affecter.idAnnonce inner join users on users.id = affecter.id where annonce.etatAnnonce=2 and annonce.iduser = ?',$array);
+        return view('mesRendezVousSHN',['mesRendezVous' => $mesRendezVous]);
+    }
 
 }

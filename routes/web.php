@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DemandeurController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\GererOffre;
 use App\Http\Controllers\ShnController;
 use Illuminate\Support\Facades\Route;
@@ -72,8 +73,15 @@ Route::post('/voirPhotos',[GererOffre::class,"voirPhotos"])->name('voirPhotos');
 
 Route::get('/DemandesRecues', [ShnController::class ,"consulterDemandesDesUsers"])->name('DemandesRecues');
 
+
+Route::get('/MesRendezVous', [ShnController::class ,"mesRendezVous"])->name('mesRendezVous');
+
 Route::post('/affecterAnnonce', [ShnController::class ,"affecterAnnonce"])->name('affecterAnnonce');
 
 Route::post('/refuserAnnonce', [ShnController::class ,"refuserAnnonce"])->name('refuserAnnonce');
+
+
+Route::post('/email', [EmailController::class, 'create'])->name('email');
+Route::post('/email2', [EmailController::class, 'sendEmail'])->name('email2');
 
 require __DIR__.'/auth.php';
