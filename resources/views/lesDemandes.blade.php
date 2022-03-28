@@ -21,15 +21,44 @@
         </div>
 
     @endif
-    @if (!empty($mesDemandesUsers))
+
+        @if (!empty($mesDemandesUsers))
 <div class="container rounded bg-light mt-3 " >
  <div class="row">
 <div class="container mt-5">
     <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mr mb-1"></i>
         <a href="/dashboard" class="btn btn-info" role="button">Revenir au profil</a>
     </div>
-    <br>
-    <br>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="float: right; margin-bottom: 10px;">
+        Consulter vos recommandation
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <table class="table table-hover table-responsive">
+                        <thead class="bg-info text-white">
+                        <tr>
+                            <th scope="col">Demandeur</th>
+                            <th scope="col">Nombre Total de bénéfices</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($recommandation as $value)
+                            <tr>
+                            <td>{{$value->name }}</td>
+                            <td>{{$value->nombreDeBenefices }}</td></tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <table class="table table-hover table-responsive">
         <thead class="bg-info text-white">
         <tr>

@@ -259,7 +259,6 @@ class ShnController extends Controller
         $user = Auth::user();
         $id = $user->getAuthIdentifier();
         $array = explode(' ', $id);
-
         $mesannonce = DB::select('select * from annonce where iduser = ?',$array);
         return view('mesAnnonces',['annonces' => $mesannonce]);
     }
@@ -312,9 +311,10 @@ class ShnController extends Controller
     public function consulterDemandesDesUsers(){
         $user = Auth::user();
         $id = $user->getAuthIdentifier();
-        $array = explode(' ', $id);
-        $mesDemandesUsers = DB::select('select * from choisir inner join annonce on annonce.idAnnonce = choisir.idAnnonce inner join users on users.id = choisir.idchoix where annonce.etatAnnonce!=2 and annonce.iduser = ?',$array);
-        return view('lesDemandes',['mesDemandesUsers' => $mesDemandesUsers]);
+        $iduser = explode(' ', $id);
+        $recommandation = DB::select('select name,count(*) as nombreDeBenefices from affecter inner join users on users.id = affecter.id inner join annonce on annonce.idAnnonce = affecter.idAnnonce where annonce.iduser = ? and  annonce.etatAnnonce=2 group by affecter.id',$iduser);
+        $mesDemandesUsers = DB::select('select * from choisir inner join annonce on annonce.idAnnonce = choisir.idAnnonce inner join users on users.id = choisir.idchoix where annonce.etatAnnonce!=2 and annonce.iduser = ?',$iduser);
+        return view('lesDemandes',['mesDemandesUsers' => $mesDemandesUsers ,'recommandation'=>$recommandation]);
     }
     public function affecterAnnonce(Request $request){
         try {
@@ -366,5 +366,6 @@ class ShnController extends Controller
         $mesRendezVous = DB::select('select * from affecter inner join annonce on annonce.idAnnonce = affecter.idAnnonce inner join users on users.id = affecter.id where annonce.etatAnnonce=2 and annonce.iduser = ?',$array);
         return view('mesRendezVousSHN',['mesRendezVous' => $mesRendezVous]);
     }
+
 
 }

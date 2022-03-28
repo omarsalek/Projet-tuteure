@@ -3,6 +3,7 @@
 
 @section('content')
     <br>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <div class="container">
         <div id="content" class="content p-0">
             <div class="profile-header">
@@ -24,7 +25,7 @@
                 <ul class="profile-header-tab nav nav-tabs">
                     <li class="nav-item"><a href="#profile" class="nav-link" name="profil" data-toggle="tab" id="titreInformationProfil">Information</a></li>
                     <li class="nav-item"><a href="/GererAnnonces" class="nav-link " data-toggle="tab">Gérer Annonces</a></li>
-                    <li class="nav-item"><a href="/DemandesRecues" class="nav-link " data-toggle="tab">Mes demandes reçues </a></li>
+                    <li class="nav-item"><a href="/DemandesRecues" class="nav-link " data-toggle="tab">Mes demandes reçues <span class="badge badge-danger">{{$nbDemande[0]->nb}}</span> </a></li>
                     <li class="nav-item"><a href="/MesRendezVous" class="nav-link " data-toggle="tab">Mes rendez-vous</a></li>
                 </ul>
             </div>

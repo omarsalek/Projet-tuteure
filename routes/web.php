@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DemandeurController;
+use App\Http\Controllers\DiscussionEnLigne;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\GererOffre;
 use App\Http\Controllers\ShnController;
@@ -84,4 +85,7 @@ Route::post('/refuserAnnonce', [ShnController::class ,"refuserAnnonce"])->name('
 Route::post('/email', [EmailController::class, 'create'])->name('email');
 Route::post('/email2', [EmailController::class, 'sendEmail'])->name('email2');
 
+
+Route::post('/enligne' , [ DiscussionEnLigne::class,'enligne'])->name('enligne');
+Route::post('/enligne2' ,[ DiscussionEnLigne::class,'envoyerMessageEnLigne'])->name('enligne2');
 require __DIR__.'/auth.php';

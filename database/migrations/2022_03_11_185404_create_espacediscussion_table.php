@@ -16,7 +16,7 @@ class CreateEspacediscussionTable extends Migration
         Schema::create('espacediscussion', function (Blueprint $table) {
             $table->integer('idMessage', true);
             $table->string('nomUtilisateur', 250)->nullable();
-            $table->text('contenu');
+            $table->text('contenu')->nullable();
             $table->text('photo')->nullable();
             $table->date('DatePublication');
             $table->integer('idAnnonce')->nullable()->index('FK_espaceDiscussion_idAnnonce');

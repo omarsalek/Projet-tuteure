@@ -58,9 +58,10 @@
                                         <img src="{{URL('storage/imageAnnonces/'.$value->photoAnnonce)}}"  alt="Card image cap">
                                     </div></td>
                                 <td>
-                                    <form id="formChoix" action="#" method="post">
+                                    <form id="formChoix" action="{{route('enligne')}}" method="post">
                                         @csrf
                                         <input type="hidden"  name="idchoix" value="{{ $value->id  }}">
+                                        <input type="hidden"  name="type" value="{{ $value->type  }}">
                                         <button type="submit" class="btn btn-info w-100"><input type="hidden"  name="idAnnonce" value="{{ $value->idAnnonce  }}">En ligne</button>
                                     </form>
                                     <form id="formChoix" action="{{route('email')}}" method="post">

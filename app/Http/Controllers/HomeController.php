@@ -6,6 +6,7 @@ use App\Http\Requests\updateProfil;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
@@ -20,7 +21,11 @@ class HomeController extends Controller
         if ($user->role == 'demandeur'){
             return view('dashboard' ,compact('user') );
         }else{
-            return view('dashboardOffreur' ,compact('user') );
+            $id = $user->getAuthIdentifier();
+            $iduser = explode(' ', $id);
+            $nbDemande = DB::select('select count(*) as nb from choisir inner join annonce on annonce.idAnnonce = choisir.idAnnonce inner join users on users.id = choisir.idchoix where annonce.etatAnnonce!=2 and annonce.iduser = ?',$iduser);
+
+            return view('dashboardOffreur' ,compact('user' ,'nbDemande') );
         }
 
 
