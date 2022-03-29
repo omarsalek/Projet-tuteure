@@ -24,8 +24,7 @@
                 <ul class="profile-header-tab nav nav-tabs">
                     <li class="nav-item"><a href="#profile" class="nav-link" name="profil" data-toggle="tab" id="titreInformationProfil">Information</a></li>
                     <li class="nav-item"><a href="/LesAnnonces" class="nav-link " data-toggle="tab">Les Annonces</a></li>
-                    <li class="nav-item"><a href="" class="nav-link " data-toggle="tab">Mes Demandes</a></li>
-                    <li class="nav-item"><a href="" class="nav-link " data-toggle="tab">Mes Alertes</a></li>
+                    <li class="nav-item"><a href="/mesDemandesAcceptees" class="nav-link " data-toggle="tab">Mes Demandes acceptées</a></li>
 
                 </ul>
             </div>

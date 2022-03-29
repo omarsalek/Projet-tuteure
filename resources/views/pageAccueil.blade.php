@@ -100,7 +100,4 @@
         </section>
     </main>
 @endsection
-{{--
-@foreach($posts as $post)
-    <h3>{{$post}}</h3>
-@endforeach--}}
+

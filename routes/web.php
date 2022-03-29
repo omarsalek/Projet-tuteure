@@ -88,4 +88,7 @@ Route::post('/email2', [EmailController::class, 'sendEmail'])->name('email2');
 
 Route::post('/enligne' , [ DiscussionEnLigne::class,'enligne'])->name('enligne');
 Route::post('/enligne2' ,[ DiscussionEnLigne::class,'envoyerMessageEnLigne'])->name('enligne2');
+
+Route::get('mesDemandesAcceptees',[DemandeurController::class ,"mesDemandesAcceptees"])->name('mesDemandesAcceptees');
+
 require __DIR__.'/auth.php';

@@ -14,7 +14,6 @@
 					<span class="contact100-form-title">
 						Formulaire de contact
                     </span>
-                  
 					<div class="wrap-input100 validate-input" data-validate = "Name is required">
 						<input class="input100" type="text" name="name" placeholder="Nom">
 						<span class="focus-input100"></span>
@@ -85,7 +84,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'UA-23581568-13');
 </script>
 @endsection

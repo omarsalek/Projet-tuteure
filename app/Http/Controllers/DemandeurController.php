@@ -44,4 +44,12 @@ class DemandeurController extends Controller
             return redirect()->back()->with('danger', 'Erreur survenue !');
         }
     }
-}
+    public function mesDemandesAcceptees(){
+            $user = Auth::user();
+            $id = $user->getAuthIdentifier();
+            $iduser = explode(' ', $id);
+            $mesDemandesAcceptees = DB::select('select * from affecter inner join annonce on annonce.idAnnonce = affecter.idAnnonce inner join users on users.id = affecter.id where  affecter.id = ?',$iduser);
+
+            return view('mesDemandesAcceptees',['mesDemandesAcceptees' => $mesDemandesAcceptees]);
+        }
+    }
