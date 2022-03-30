@@ -6,7 +6,7 @@
                 <div class="card-body">
                     @if (session('resent'))
                         <div class="alert alert-success" role="alert">
-                            {{ __('Email envoyer .') }}
+                            {{ __('Email envoyée .') }}
                         </div>
                     @endif
                     {!! $contents !!}

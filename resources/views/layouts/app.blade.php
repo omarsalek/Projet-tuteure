@@ -23,6 +23,7 @@
 <body>
 @include('partials.header')
 @yield('content')
+<br><br><br><br><br><br>
 @include('partials.footer')
 </body>
 </html>

@@ -89,6 +89,9 @@ Route::post('/email2', [EmailController::class, 'sendEmail'])->name('email2');
 Route::post('/enligne' , [ DiscussionEnLigne::class,'enligne'])->name('enligne');
 Route::post('/enligne2' ,[ DiscussionEnLigne::class,'envoyerMessageEnLigne'])->name('enligne2');
 
+
 Route::get('mesDemandesAcceptees',[DemandeurController::class ,"mesDemandesAcceptees"])->name('mesDemandesAcceptees');
 
+
+Route::post('retirerAffectation',[ShnController::class ,"retirerAffectation"])->name('retirerAffectation');
 require __DIR__.'/auth.php';

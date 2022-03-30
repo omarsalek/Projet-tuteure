@@ -366,6 +366,24 @@ class ShnController extends Controller
         $mesRendezVous = DB::select('select * from affecter inner join annonce on annonce.idAnnonce = affecter.idAnnonce inner join users on users.id = affecter.id where annonce.etatAnnonce=2 and annonce.iduser = ?',$array);
         return view('mesRendezVousSHN',['mesRendezVous' => $mesRendezVous]);
     }
+    public function retirerAffectation(Request $request){
+        try {
 
+            $request->validate([
+                'id' => 'required',
+                'idAnnonce' => 'required'
+            ]);
+            $id= explode(' ', $request->input('id'));
+            $idAnnonce= explode(' ', $request->input('idAnnonce'));
+            DB::table('affecter')->where('id', $id)->where('idAnnonce', $idAnnonce)->delete();
+            DB::table('annonce')->where('idAnnonce','=',$idAnnonce)->update([
+            'etatAnnonce'=>1
+            ]);
+            return  redirect()->back()->with('success', 'vous avez bien supprimé cette affectation !');
+        } catch (\Illuminate\Database\QueryException $ex)
+        {
+            return redirect()->back()->with('danger', 'Erreur survenue !');
+        }
+    }
 
 }

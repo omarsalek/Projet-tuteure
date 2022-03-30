@@ -44,6 +44,7 @@
                             <th scope="col">Type</th>
                             <th scope="col">Date</th>
                             <th scope="col">Photo</th>
+                            <th scope="col">Retirer</th>
                             <th scope="col">Prenez rendez-vous</th>
                         </tr>
                         </thead>
@@ -58,7 +59,12 @@
                                         <img src="{{URL('storage/imageAnnonces/'.$value->photoAnnonce)}}"  alt="Card image cap">
                                     </div></td>
                                 <td>
-                                    <form id="formChoix" action="{{route('enligne')}}" method="post">
+                                    <form id="formChoix" action="{{route('retirerAffectation')}}" method="post">
+                                        @csrf
+                                        <input type="hidden"  name="id" value="{{ $value->id  }}">
+                                        <button type="submit" class="btn btn-danger w-100"><input type="hidden"  name="idAnnonce" value="{{ $value->idAnnonce }}">Retirer</button>
+                                    </form></td>
+                            <td><form id="formChoix" action="{{route('enligne')}}" method="post">
                                         @csrf
                                         <input type="hidden"  name="idchoix" value="{{ $value->id  }}">
                                         <input type="hidden"  name="type" value="{{ $value->type  }}">

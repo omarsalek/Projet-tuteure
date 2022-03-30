@@ -19,7 +19,10 @@ class HomeController extends Controller
     public function profilInformations(){
         $user= Auth::user();
         if ($user->role == 'demandeur'){
-            return view('dashboard' ,compact('user') );
+            $id = $user->getAuthIdentifier();
+            $iduser = explode(' ', $id);
+            $nbAcceptation = DB::select('select count(*) as nb from affecter where affecter.id = ?',$iduser);
+            return view('dashboard' ,compact('user','nbAcceptation') );
         }else{
             $id = $user->getAuthIdentifier();
             $iduser = explode(' ', $id);
