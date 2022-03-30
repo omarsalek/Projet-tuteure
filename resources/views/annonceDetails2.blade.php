@@ -4,10 +4,8 @@
 
     <div class="container rounded bg-light mt-3 " >
         <div class="row">
-            <div class="d-wrapper mt-3 flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mr mb-1"></i>
+            <div class="d-wrapper mt-3 back"><i class="fa fa-long-arrow-left mr-1 mr mb-1"></i>
                 <a href="/RechercherAnnonces" class="btn btn-info" role="button">Revenir au choix</a>
-                <br>
-                <br>
                 @if(Session::has('success'))
                     <div class="alert alert-success">
                         {{ Session::get('success') }}
