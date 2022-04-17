@@ -110,7 +110,6 @@ class ShnController extends Controller
     public function enregistrerAnnonceChaus(Request $request){
         $user = Auth::user();
         try {
-
             $request->validate([
                 'adresse' => 'required',
                 'ville' => 'required',
@@ -385,5 +384,6 @@ class ShnController extends Controller
             return redirect()->back()->with('danger', 'Erreur survenue !');
         }
     }
+
 
 }

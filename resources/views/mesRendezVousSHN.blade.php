@@ -63,7 +63,8 @@
                                         @csrf
                                         <input type="hidden"  name="id" value="{{ $value->id  }}">
                                         <button type="submit" class="btn btn-danger w-100"><input type="hidden"  name="idAnnonce" value="{{ $value->idAnnonce }}">Retirer</button>
-                                    </form></td>
+                                    </form>
+                                </td>
                             <td><form id="formChoix" action="{{route('enligne')}}" method="post">
                                         @csrf
                                         <input type="hidden"  name="idchoix" value="{{ $value->id  }}">

@@ -56,11 +56,39 @@
                     </div>
                 </div>
 
-                <div class="row mt-4 ">
-                    <br>
-                    <div class="col-md-6"><input type="text" class="form-control" name="adresse" placeholder="Adresse"></div>
-                    <div class="col-md-6"><input type="text" class="form-control" name="ville" placeholder="Ville"></div>
-                </div>
+                <label id ="labeleAnnonceTitre">Adresse : </label>
+                <select name="adresse" required>
+                    <option value="T.R régionale zone Sud Est">T.R régionale zone Sud Est</option>
+                    <option value="T.R régionale zone Sud Ouest">T.R régionale zone Sud Ouest</option>
+                    <option value="T.R régionale zone Nord Est">T.R régionale zone Nord Est</option>
+                    <option value="T.R régionale zone Nord Ouest">T.R régionale zone Nord Ouest</option>
+                    <option value="Chpts zone Sud Est">Chpts zone Sud Est</option>
+                    <option value="Chpts zone Sud Ouest">Chpts zone Sud Ouest</option>
+                    <option value="Chpts zone Nord Est">Chpts zone Nord Est</option>
+                    <option value="Chpts zone Nord Ouest">Chpts zone Nord Ouest</option>
+                    <option value="Chpts de France Indoor">Chpts de France Indoor</option>
+                    <option value="Chpts de France Mer">Chpts de France Mer</option>
+                    <option value="Chpts de France Beacg Rowing Sprint">Chpts de France Beacg Rowing Sprint</option>
+                    <option value="Chpts de France Bateaux courts">Chpts de France Bateaux courts</option>
+                    <option value="Chpts de France J16">Chpts de France J16</option>
+                    <option value="Chpts de France J18">Chpts de France J18</option>
+                    <option value="Pôle Lyon">Pôle Lyon</option>
+                    <option value="Pôle Nantes">Pôle Nantes</option>
+                    <option value="Pôle Paris">Pôle Paris</option>
+                    <option value="Pôle Toulouse">Pôle Toulouse</option>
+                    <option value="Bassin Aiguebelette">Bassin Aiguebelette</option>
+                    <option value="Bassin de Bordeaux">Bassin de Bordeaux</option>
+                    <option value="Bassin de Cazaubon">Bassin de Cazaubon</option>
+                    <option value="Bassin de Gravelines">Bassin de Gravelines</option>
+                    <option value="Bassin de Libourne">Bassin de Libourne</option>
+                    <option value="Bassin de Macôn">Bassin de Macôn</option>
+                    <option value="Bassin de Mantes-la-jolie">Bassin de Mantes-la-jolie</option>
+                    <option value="Bassin de Vaires-sur-Marne">Bassin de Vaires-sur-Marne</option>
+                    <option value="Bassin de Vichy">Bassin de Vichy</option>
+                    <option value="Bassin de Mantes-la-jolie">Bassin de Mantes-la-jolie</option>
+                </select>
+                <br><br>
+                <div class="col-md-5"><input type="text" class="form-control" name="ville" placeholder="Ville"></div>
                 <br>
                 <div class="row mt-4 ">
                     <br>

@@ -15,25 +15,23 @@ class DemandeurController extends Controller
         return view('lesAnnonces', compact('user'));
     }
     public function rechercherAnnonces(){
-        $annonces = DB::table('annonce')->join('lieu','annonce.idLieu','=','lieu.idLieu')->get();
+        $annonces = DB::table('annonce')->join('lieu','annonce.idLieu','=','lieu.idLieu')->where('etatAnnonce', '!=', 2)->get();
         return view('rechercherAnnonces',compact('annonces' ));
 
     }
     public function searchResult(Request $request)
     {
         $searchResListe = $request->input('searchResListe');
-
         $searchRes=$request->input('searchRes');
         if ($searchResListe=='tousAnnonces'){
-            $annonces = DB::table('annonce')->join('lieu','annonce.idLieu','=','lieu.idLieu')->where('ville','like','%'.$searchRes.'%')->get();
+            $annonces = DB::table('annonce')->join('lieu','annonce.idLieu','=','lieu.idLieu')->where('ville','like','%'.$searchRes.'%')->where('etatAnnonce', '!=', 2)->get();
             return  view('rechercherAnnonces',compact('annonces' ));
 
         }
         else {
             $annonces = DB::table('annonce')->join('lieu', 'annonce.idLieu', '=', 'lieu.idLieu')->where('ville', 'like', '%' . $searchRes . '%')->where([
-                'type' => $searchResListe])->get();
+                'type' => $searchResListe])->where('ville', 'like', '%' . $searchRes . '%')->where('etatAnnonce', '!=', 2)->get();
             return view('rechercherAnnonces', compact('annonces'));
-
         }
     }
     public function supprimerCompte($id){

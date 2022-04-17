@@ -94,4 +94,5 @@ Route::get('mesDemandesAcceptees',[DemandeurController::class ,"mesDemandesAccep
 
 
 Route::post('retirerAffectation',[ShnController::class ,"retirerAffectation"])->name('retirerAffectation');
+
 require __DIR__.'/auth.php';
