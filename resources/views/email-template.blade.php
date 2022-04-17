@@ -10,8 +10,10 @@
                         </div>
                     @endif
                     {!! $contents !!}
+
                 </div>
                 <div class="card-footer">A bientôt</div>
+                <div class="card-footer">Adresse de Contact : {!! $emailUser !!}</div>
 
             </div>
         </div>

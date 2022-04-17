@@ -27,6 +27,7 @@
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<input class="input100" type="hidden" name="email" value="{{ $email }}">
+                        <input class="input100" type="hidden" name="emailUser" value="{{ $emailUser }}">
                     </div>
                     <div class="wrap-input100 validate-input" data-validate = "Subject is required">
 						<input class="input100" type="text" name="subject" placeholder="Sujet">
